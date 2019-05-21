@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import "./App.css";
 import Countdown from "./Countdown";
+import EditEvent from "./Editevent";
 
 class App extends Component {
   constructor() {
@@ -13,12 +14,19 @@ class App extends Component {
       ]
     };
   }
+
   render() {
     const events = this.state.events.map(el => {
       return <Countdown key={el.id} name={el.name} time={el.time} />;
     });
-    return <div className="app">{events}</div>;
-  }
+    return <div className="app">
+      {events}
+      <EditEvent
+        onInputChange={val => this.handleEditEvent(val)}
+        onSave={() => alert("Test")}
+      />
+    </div>
+  };
 }
 
 export default App;
