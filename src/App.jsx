@@ -8,16 +8,16 @@ class App extends Component {
     super();
     this.state = {
       events: [
-        { id: 0, name: "Event 1", time: "7:00" },
-        { id: 1, name: "Event 2", time: "15:00" },
-        { id: 2, name: "Event 3", time: "22:00" }
+        { id: 0, name: "Event 1", hour: "14", minute: "7", },
+        { id: 1, name: "Event 2", hour: "03", minute: "15" },
+        { id: 2, name: "Event 3", hour: "13", minute: "22" }
       ]
     };
   }
 
   render() {
     const events = this.state.events.map(el => {
-      return <Countdown key={el.id} name={el.name} time={el.time} />;
+      return <Countdown key={el.id} name={el.name} hour={el.hour} minute={el.minute} />;
     });
     return <div className="app">
       {events}
