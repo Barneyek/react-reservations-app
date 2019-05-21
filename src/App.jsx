@@ -11,8 +11,21 @@ class App extends Component {
         { id: 0, name: "Event 1", hour: "14", minute: "7", },
         { id: 1, name: "Event 2", hour: "03", minute: "15" },
         { id: 2, name: "Event 3", hour: "13", minute: "22" }
-      ]
+      ],
+      editedEvent: {
+        id: 3, name: "", hour: "", minute: ""
+      }
     };
+
+    this.handleEditEvent = this.handleEditEvent.bind(this);
+  }
+
+  handleEditEvent(val) {
+    this.setState(prevState => {
+      return {
+        editedEvent: Object.assign(prevState.editedEvent, val)
+      }
+    })
   }
 
   render() {
