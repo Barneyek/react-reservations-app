@@ -6,7 +6,8 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-scripts": "2.1.8",
-    "uniqid": "^5.0.3"
+    "uniqid": "^5.0.3",
+    "yaml-js": "^0.2.3"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -23,7 +24,5 @@
     "not ie <= 11",
     "not op_mini all"
   ],
-  "devDependencies": {
-   
-  }
+  "devDependencies": {}
 }
