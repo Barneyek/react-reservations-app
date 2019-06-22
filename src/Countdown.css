@@ -3,4 +3,15 @@
   color: #fff;
   font-size: 1.8rem;
   padding: 25px;
+
+}
+.countdown__icons {
+  display: none;
+  float: right;
+  cursor: pointer;
+  transition: 0.3s linear;
+}
+
+.countdown:hover .countdown__icons {
+  display: block;
 }
