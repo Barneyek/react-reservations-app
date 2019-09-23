@@ -53,14 +53,14 @@ class App extends Component {
 	render() {
 		const events = this.state.events.map(el => {
 			return (
-			<Countdown
-				key={el.id}
-				id={el.id}
-				name={el.name}
-				hour={el.hour}
-				minute={el.minute}
-				onRemove={id => this.handleRemoveEvent(id)}
-			/>
+				<Countdown
+					key={el.id}
+					id={el.id}
+					name={el.name}
+					hour={el.hour}
+					minute={el.minute}
+					onRemove={id => this.handleRemoveEvent(id)}
+				/>
 			);
 		});
 		return <div className="app">
