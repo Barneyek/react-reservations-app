@@ -15,16 +15,17 @@ class App extends Component {
 				{ id: 2, name: "Event 3", hour: "13", minute: "22" }
 			],
 			editedEvent: {
-				id:uniqid(), name: "", hour: "", minute: ""
+				id: uniqid(), name: "", hour: "", minute: ""
 			}
 		};
 
 		this.handleEditEvent = this.handleEditEvent.bind(this);
 		this.handleSaveEvent = this.handleSaveEvent.bind(this);
 		this.handleRemoveEvent = this.handleRemoveEvent.bind(this);
+		this.handleEditInit = this.handleEditInit.bind(this);
 	}
 
-	handleRemoveEvent(id){
+	handleRemoveEvent(id) {
 		this.setState(prevState => ({
 			events: prevState.events.filter(el => el.id !== id)
 		}));
@@ -50,6 +51,12 @@ class App extends Component {
 		}));
 	}
 
+	handleEditInit(id) {
+		this.setState(prevState => ({
+			editedEvent: { ...prevState.events[id] }
+		}));
+	}
+
 	render() {
 		const events = this.state.events.map(el => {
 			return (
@@ -60,6 +67,7 @@ class App extends Component {
 					hour={el.hour}
 					minute={el.minute}
 					onRemove={id => this.handleRemoveEvent(id)}
+					onEditInit={id => this.handleEditInit(id)}
 				/>
 			);
 		});
