@@ -40,20 +40,39 @@ class App extends Component {
 	}
 
 	handleSaveEvent() {
-		this.setState(prevState => ({
-			events: [...prevState.events, prevState.editedEvent],
-			editedEvent: {
-				id: uniqid(),
-				name: "",
-				hour: "",
-				minute: ""
+		this.setState(prevState => {
+			const editedEventExists = prevState.events.find(
+				el => el.id === prevState.editedEvent.id
+			);
+			console.log(editedEventExists);
+			let updatedEvents;
+			if (editedEventExists) {
+				updatedEvents = prevState.events.map(el => {
+					if (el.id === prevState.editedEvent.id)
+						return prevState.editedEvent;
+					else
+						return el;
+				});
 			}
-		}));
+			else {
+				updatedEvents = [...prevState.events, prevState.editedEvent];
+			}
+
+			return {
+				events: updatedEvents,
+				editedEvent: {
+					id: uniqid(),
+					name: "",
+					hour: "",
+					minute: ""
+				}
+			};
+		});
 	}
 
 	handleEditInit(id) {
 		this.setState(prevState => ({
-			editedEvent: { ...prevState.events[id] }
+			editedEvent: { ...prevState.events.find(el => el.id === id) }
 		}));
 	}
 
