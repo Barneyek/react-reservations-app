@@ -1,7 +1,9 @@
 import React from "react";
 import "./Editevent.css";
-import { isValidNumberInput } from "./utils.js";
 import PropTypes from "prop-types";
+
+import { isValidNumberInput, parseInputAsNumber, isValidName, isValidHour, isValidMinute } from "./utils.js";
+
 
 const EditEvent = props => {
 	return (
@@ -29,7 +31,7 @@ const EditEvent = props => {
 						isValidNumberInput(e)
 					}
 					onChange={e =>
-						props.onInputChange({ [e.target.name]: e.target.value })
+						props.onInputChange({ [e.target.name]: parseInputAsNumber(e.target.value) })
 					}
 				/>
 			</div>
@@ -44,7 +46,7 @@ const EditEvent = props => {
 						isValidNumberInput(e)
 					}
 					onChange={e =>
-						props.onInputChange({ [e.target.name]: e.target.value })
+						props.onInputChange({ [e.target.name]: parseInputAsNumber(e.target.value) })
 					}
 				/>
 			</div>
