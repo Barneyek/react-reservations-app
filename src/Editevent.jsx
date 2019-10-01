@@ -6,6 +6,10 @@ import { isValidNumberInput, parseInputAsNumber, isValidName, isValidHour, isVal
 
 
 const EditEvent = props => {
+	const isFormValid =
+		isValidName(props.name) &&
+		isValidHour(props.hour) &&
+		isValidMinute(props.minute);
 	return (
 		<div className="edit-event">
 			<div className="edit-event__input-group">
@@ -51,7 +55,7 @@ const EditEvent = props => {
 				/>
 			</div>
 			<div className="edit-event__button-group">
-				<button onClick={() => props.onSave()}>OK</button>
+				<button disabled={!isFormValid} onClick={() => props.onSave()}>OK</button>
 				<button>Cancel</button>
 			</div>
 		</div>

@@ -99,7 +99,7 @@ class App extends Component {
 				onInputChange={val => this.handleEditEvent(val)}
 				onSave={() => this.handleSaveEvent()}
 			/>
-		</div>
+		</div>;
 	}
 }
 
