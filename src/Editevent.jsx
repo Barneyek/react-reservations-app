@@ -1,6 +1,7 @@
 import React from "react";
 import "./Editevent.css";
 import { isValidNumberInput } from "./utils.js";
+import PropTypes from "prop-types";
 
 const EditEvent = props => {
 	return (
@@ -23,7 +24,7 @@ const EditEvent = props => {
 					type="tel"
 					id="hour"
 					name="hour"
-					value={props.hour}
+					value={props.hour === -1 ? "" : props.hour}
 					onKeyPress={e =>
 						isValidNumberInput(e)
 					}
@@ -38,7 +39,7 @@ const EditEvent = props => {
 					type="tel"
 					id="minute"
 					name="minute"
-					value={props.minute}
+					value={props.minute === -1 ? "" : props.minute}
 					onKeyPress={e =>
 						isValidNumberInput(e)
 					}
@@ -53,6 +54,14 @@ const EditEvent = props => {
 			</div>
 		</div>
 	);
+};
+
+EditEvent.propTypes = {
+	name: PropTypes.string,
+	hour: PropTypes.number,
+	minute: PropTypes.number,
+	onInputChange: PropTypes.func,
+	onSave: PropTypes.func
 };
 
 export default EditEvent; 

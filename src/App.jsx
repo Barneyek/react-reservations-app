@@ -10,12 +10,12 @@ class App extends Component {
 		super();
 		this.state = {
 			events: [
-				{ id: 0, name: "Event 1", hour: "14", minute: "07", },
-				{ id: 1, name: "Event 2", hour: "03", minute: "15" },
-				{ id: 2, name: "Event 3", hour: "13", minute: "22" }
+				{ id: 0, name: "Event 1", hour: 14, minute: 7, },
+				{ id: 1, name: "Event 2", hour: 3, minute: 15 },
+				{ id: 2, name: "Event 3", hour: 13, minute: 22 }
 			],
 			editedEvent: {
-				id: uniqid(), name: "", hour: "", minute: ""
+				id: uniqid(), name: "", hour: -1, minute: -1
 			}
 		};
 
@@ -44,7 +44,7 @@ class App extends Component {
 			const editedEventExists = prevState.events.find(
 				el => el.id === prevState.editedEvent.id
 			);
-			console.log(editedEventExists);
+
 			let updatedEvents;
 			if (editedEventExists) {
 				updatedEvents = prevState.events.map(el => {
@@ -63,8 +63,8 @@ class App extends Component {
 				editedEvent: {
 					id: uniqid(),
 					name: "",
-					hour: "",
-					minute: ""
+					hour: -1,
+					minute: -1
 				}
 			};
 		});
