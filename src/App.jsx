@@ -9,10 +9,16 @@ class App extends Component {
 	constructor() {
 		super();
 		this.state = {
+			now:{
+				hour: new Date().getHours(),
+				minute: new Date().getMinutes(),
+				seconds: new Date().getSeconds()
+			},
 			events: [
 				{ id: 0, name: "Event 1", hour: 14, minute: 7, },
 				{ id: 1, name: "Event 2", hour: 3, minute: 15 },
-				{ id: 2, name: "Event 3", hour: 13, minute: 22 }
+				{ id: 2, name: "Event 3", hour: 13, minute: 22 },
+				{ id: 3, name: "Event 4", hour: 23, minute: 52 }
 			],
 			editedEvent: {
 				id: uniqid(), name: "", hour: -1, minute: -1
@@ -94,6 +100,7 @@ class App extends Component {
 					name={el.name}
 					hour={el.hour}
 					minute={el.minute}
+					timeNow={this.state.now}
 					onRemove={id => this.handleRemoveEvent(id)}
 					onEditInit={id => this.handleEditInit(id)}
 				/>
